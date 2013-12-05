@@ -56,3 +56,41 @@ location /test_lua {
 参考文献:
 [https://github.com/chaoslawful/lua-nginx-module#installation](https://github.com/chaoslawful/lua-nginx-module#installation)
 [http://huoding.com/2012/08/31/156](http://huoding.com/2012/08/31/156)
+
+
+安装echo模块(此模块用于调试)
+-----------------------------
+echo用于显示简单的文字，用于调试。
+
+1. 下载源模块包[https://github.com/agentzh/echo-nginx-module](https://github.com/agentzh/echo-nginx-module) 或者使用git命令 git clone https://github.com/agentzh/echo-nginx-module.git
+
+2. 增加对应模块
+```nginx
+./configura --add-module=path/to/echo-nginx-module
+```
+
+3. 重启服务
+
+参考文献：
+[https://github.com/agentzh/echo-nginx-module](https://github.com/agentzh/echo-nginx-module)
+[http://wiki.nginx.org/HttpEchoModule](http://wiki.nginx.org/HttpEchoModule)
+
+
+geo模块
+--------
+geo模块为自带模块，无需安装，在源码中包含sina对应的ip映射文件(geo_sina.conf)。
+geo模块用于映射ip地址。
+geo模块配置示例:
+```nginx
+geo $mallcity {
+        ranges;
+        default 11|110;
+        include geo_sina.conf;
+      }
+
+```
+
+参考文献:
+[http://nginx.org/en/docs/http/ngx_http_geo_module.html](http://nginx.org/en/docs/http/ngx_http_geo_module.html)
+中文翻译:
+[http://nginx.org/cn/docs/http/ngx_http_geo_module.html](http://nginx.org/cn/docs/http/ngx_http_geo_module.html)
