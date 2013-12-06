@@ -5,7 +5,7 @@ n3r-nginx-1.4.2
 
 全局nginx配置:
 ```nginx
---prefix=/home/maxim/App/nginx --add-module=/home/maxim/App/ngx_devel_kit --add-module=/home/maxim/App/lua-nginx-module --add-module=/home/maxim/App/nginx-3rd-module/echo-nginx-module --add-module=/home/maxim/App/nginx-3rd-module/nginx-http-concat --with-http_stub_status_module --add-module=/home/maxim/App/nginx-3rd-module/set-misc-nginx-module
+--prefix=/home/maxim/App/nginx --add-module=/home/maxim/App/ngx_devel_kit --add-module=/home/maxim/App/lua-nginx-module --add-module=/home/maxim/App/nginx-3rd-module/echo-nginx-module --add-module=/home/maxim/App/nginx-3rd-module/nginx-http-concat --with-http_stub_status_module --add-module=/home/maxim/App/nginx-3rd-module/set-misc-nginx-module --add-module=/home/maxim/App/nginx-3rd-module/encrypted-session-nginx-module --add-module=/home/maxim/App/nginx-3rd-module/memc-nginx-module --add-module=/home/maxim/App/nginx-3rd-module/srcache-nginx-module --with-http_ssl_module --with-http_gzip_static_module --with-http_sub_module
 ```
 
 准备阶段
@@ -179,6 +179,60 @@ set-misc-nginx-module
 参考文献：
 [https://github.com/agentzh/set-misc-nginx-module](https://github.com/agentzh/set-misc-nginx-module)
 
+
+encrypted-session-nginx-module 模块
+-------------------------------------
+
+这个模块是由张奕春开发的nginx扩展功能，支持nginx加解密操作。
+
+1. 下载encrypted-session-nginx-module模块的源代码， 或者使用git命令 git clone https://github.com/agentzh/encrypted-session-nginx-module.git
+
+2. 安装--add-module=/path/to/encrypted-session-nginx-module && make -j2 && make install
+
+参考文献：
+[https://github.com/agentzh/encrypted-session-nginx-module](https://github.com/agentzh/encrypted-session-nginx-module)
+
+
+memc-nginx-module 模块
+-------------------------
+
+这个模块是由张奕春开发的nginx扩展功能，为nginx增加memcached支持。
+
+1. 下载memc-nginx-module模块源代码[https://github.com/agentzh/memc-nginx-module](https://github.com/agentzh/memc-nginx-module) 或者使用git命令 git clone https://github.com/agentzh/memc-nginx-module.git
+
+2. 安装--add-module=/path/to/memc-nginx-module && make -j2 && make install
+
+参考文献：
+[https://github.com/agentzh/memc-nginx-module](https://github.com/agentzh/memc-nginx-module)
+
+srcache-nginx-module 模块
+----------------------------
+
+这个模块是由张奕春开发的nginx扩展功能，配合memc-nginx-module模块使用，为memcached提供一个透明缓冲层。
+
+1. 下载srcache-nginx-module模块源代码[https://github.com/agentzh/srcache-nginx-module](https://github.com/agentzh/srcache-nginx-module) 或者使用git命令 git clone https://github.com/agentzh/srcache-nginx-module.git
+
+2. 安装--add-module=/path/to/srcache-nginx-module && make -j2 && make install
+
+参考文献：
+[https://github.com/agentzh/srcache-nginx-module](https://github.com/agentzh/srcache-nginx-module)
+
+ngx_http_ssl_module 模块
+------------------------
+
+这个模块增加https支持，是nginx自带模块，非默认安装
+--with-http_ssl_module
+
+http_gzip_static_module 模块
+-----------------------------
+
+这个模块增加预压缩文件功能，是nginx自带模块，非默认安装
+--with-http_gzip_static_module
+
+http_sub_module 模块
+-----------------------
+这个模块增加替换指定字符功能，是nginx自带模块，非默认安装
+--with-http_sub_module
 
 
 
