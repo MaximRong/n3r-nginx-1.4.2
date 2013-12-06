@@ -3,6 +3,11 @@ n3r-nginx-1.4.2
 
 此工程是火箭队为了升级现场的nginx版本创建的，会写上相信的nginx-1.4.2安装步骤。
 
+全局nginx配置:
+```nginx
+--prefix=/home/maxim/App/nginx --add-module=/home/maxim/App/ngx_devel_kit --add-module=/home/maxim/App/lua-nginx-module --add-module=/home/maxim/App/nginx-3rd-module/echo-nginx-module --add-module=/home/maxim/App/nginx-3rd-module/nginx-http-concat --with-http_stub_status_module --add-module=/home/maxim/App/nginx-3rd-module/set-misc-nginx-module
+```
+
 准备阶段
 ----------
 安装git命令 (for linux系统)
@@ -91,6 +96,89 @@ geo $mallcity {
 ```
 
 参考文献:
-[http://nginx.org/en/docs/http/ngx_http_geo_module.html](http://nginx.org/en/docs/http/ngx_http_geo_module.html)
+[http://nginx.org/en/docs/http/ngx_http_geo_module.html](http://nginx.org/en/docs/http/ngx_http_geo_module.html)<br/>
 中文翻译:
 [http://nginx.org/cn/docs/http/ngx_http_geo_module.html](http://nginx.org/cn/docs/http/ngx_http_geo_module.html)
+
+
+map 模块
+----------
+映射模块，无需安装。源码中包含了school.conf对应页面。
+map模块配置示例:
+```nginx
+map $provCode $xy_url {
+        include school.conf;
+    }
+
+ server {
+     listen       8080;
+     server_name  localhost;
+
+     set $mallcity $mallcity;
+
+     if ($mallcity ~ ^(\d+)\|\d+$){
+             set $provCode $1;
+     }
+
+     location /test_lua {
+         default_type text/html;
+         echo $xy_url;
+	}
+}
+```
+参考文献:
+[http://nginx.org/en/docs/http/ngx_http_map_module.html](http://nginx.org/en/docs/http/ngx_http_map_module.html)
+
+
+nginx-http-concat 模块
+------------------------
+nginx-http-concat 模块是淘宝开发的基于Nginx减少HTTP请求数量的扩展模块,主要是用于合并减少前端用户Request的HTTP请求的数量。
+比如你可以这样合并请求
+```script
+http://example.com/??style1.css,style2.css,foo/style3.css
+```
+
+1. 下载模块，网址[https://github.com/alibaba/nginx-http-concat](https://github.com/alibaba/nginx-http-concat) 或者使用git命令 git clone https://github.com/alibaba/nginx-http-concat.git
+
+2. --add-module=/path/to/nginx-http-concat && make -j2 && make install
+
+参考文献：
+[https://github.com/alibaba/nginx-http-concat](https://github.com/alibaba/nginx-http-concat)
+
+stub_status_module 模块
+------------------------
+nginx自带监控状态模块
+
+```shell
+--with-http_stub_status_module
+```
+
+```nginx
+	location /nginx_status {
+	  # copied from http://blog.kovyrin.net/2006/04/29/monitoring-nginx-with-rrdtool/
+	  stub_status on;
+	  access_log   off;
+	  allow SOME.IP.ADD.RESS;
+	  deny all;
+	}
+```
+
+参考文献:
+[http://wiki.nginx.org/HttpStubStatusModule](http://wiki.nginx.org/HttpStubStatusModule)
+
+
+set-misc-nginx-module
+----------------------
+
+这个模块是由张奕春开发的nginx扩展功能，支持多种nginx set指令 (md5/sha1, sql/json quoting, and many more)
+
+1. 下载set-misc-nginx-module源代码[https://github.com/agentzh/set-misc-nginx-module](https://github.com/agentzh/set-misc-nginx-module) 或者使用git命令 git clone https://github.com/agentzh/set-misc-nginx-module.git
+
+2. 安装--add-module=/path/to/set-misc-nginx-module && make -j2 && make install
+
+参考文献：
+[https://github.com/agentzh/set-misc-nginx-module](https://github.com/agentzh/set-misc-nginx-module)
+
+
+
+
