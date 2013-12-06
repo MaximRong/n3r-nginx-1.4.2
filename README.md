@@ -170,7 +170,7 @@ nginx自带监控状态模块
 set-misc-nginx-module
 ----------------------
 
-这个模块是由张奕春开发的nginx扩展功能，支持多种nginx set指令 (md5/sha1, sql/json quoting, and many more)
+这个模块是由张亦春开发的nginx扩展功能，支持多种nginx set指令 (md5/sha1, sql/json quoting, and many more)
 
 1. 下载set-misc-nginx-module源代码[https://github.com/agentzh/set-misc-nginx-module](https://github.com/agentzh/set-misc-nginx-module) 或者使用git命令 git clone https://github.com/agentzh/set-misc-nginx-module.git
 
@@ -183,7 +183,7 @@ set-misc-nginx-module
 encrypted-session-nginx-module 模块
 -------------------------------------
 
-这个模块是由张奕春开发的nginx扩展功能，支持nginx加解密操作。
+这个模块是由张亦春开发的nginx扩展功能，支持nginx加解密操作。
 
 1. 下载encrypted-session-nginx-module模块的源代码， 或者使用git命令 git clone https://github.com/agentzh/encrypted-session-nginx-module.git
 
@@ -196,7 +196,7 @@ encrypted-session-nginx-module 模块
 memc-nginx-module 模块
 -------------------------
 
-这个模块是由张奕春开发的nginx扩展功能，为nginx增加memcached支持。
+这个模块是由张亦春开发的nginx扩展功能，为nginx增加memcached支持。
 
 1. 下载memc-nginx-module模块源代码[https://github.com/agentzh/memc-nginx-module](https://github.com/agentzh/memc-nginx-module) 或者使用git命令 git clone https://github.com/agentzh/memc-nginx-module.git
 
@@ -208,7 +208,7 @@ memc-nginx-module 模块
 srcache-nginx-module 模块
 ----------------------------
 
-这个模块是由张奕春开发的nginx扩展功能，配合memc-nginx-module模块使用，为memcached提供一个透明缓冲层。
+这个模块是由张亦春开发的nginx扩展功能，配合memc-nginx-module模块使用，为memcached提供一个透明缓冲层。
 
 1. 下载srcache-nginx-module模块源代码[https://github.com/agentzh/srcache-nginx-module](https://github.com/agentzh/srcache-nginx-module) 或者使用git命令 git clone https://github.com/agentzh/srcache-nginx-module.git
 
