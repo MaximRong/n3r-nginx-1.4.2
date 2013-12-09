@@ -1,7 +1,7 @@
 n3r-nginx-1.4.2
 ===============
 
-此工程是火箭队为了升级现场的nginx版本创建的，会写上相信的nginx-1.4.2安装步骤。
+此工程是火箭队为了升级现场的nginx版本创建的，详细记录了nginx-1.4.2安装步骤。
 
 全局nginx配置:
 ```nginx
@@ -14,12 +14,15 @@ n3r-nginx-1.4.2
 
 增加lua支撑
 -----------
-1. 下载ngx_devel_kit 地址[https://github.com/simpl/ngx_devel_kit](https://github.com/simpl/ngx_devel_kit) 或者使用git命令 git clone https://github.com/simpl/ngx_devel_kit.git
+1. [下载ngx_devel_kit](https://github.com/simpl/ngx_devel_kit) 或者使用git命令 git clone https://github.com/simpl/ngx_devel_kit.git
 
-2. 安装LuaJIT 地址[http://luajit.org/download.html](http://luajit.org/download.html)
+2. [下载LuaJIT](http://luajit.org/download.html)
 安装直接make -perfix=path && make install
 
-3. 下载lua-nginx-module 地址[https://github.com/chaoslawful/lua-nginx-module](https://github.com/chaoslawful/lua-nginx-module) 或者使用git命令 git clone https://github.com/chaoslawful/lua-nginx-module
+3. [下载lua-nginx-module](https://github.com/chaoslawful/lua-nginx-module) 或者使用git命令 
+```shell
+git clone https://github.com/chaoslawful/lua-nginx-module
+```
 
 4. 增加两个环境变量
 ```shell
@@ -59,15 +62,18 @@ location /test_lua {
 访问http://ip:port/test_lua 出现hello!则成功！
 
 参考文献:
-[https://github.com/chaoslawful/lua-nginx-module#installation](https://github.com/chaoslawful/lua-nginx-module#installation)
-[http://huoding.com/2012/08/31/156](http://huoding.com/2012/08/31/156)
+[张亦春lua-nginx-module官网](https://github.com/chaoslawful/lua-nginx-module#installation)
+[灯火笔记lua-nginx](http://huoding.com/2012/08/31/156)
 
 
-安装echo模块(此模块用于调试)
+安装echo模块
 -----------------------------
-echo用于显示简单的文字，用于调试。
+echo用于显示简单的文字。
 
-1. 下载源模块包[https://github.com/agentzh/echo-nginx-module](https://github.com/agentzh/echo-nginx-module) 或者使用git命令 git clone https://github.com/agentzh/echo-nginx-module.git
+1. [下载源模块包](https://github.com/agentzh/echo-nginx-module) 或者使用git命令 
+```shell
+git clone https://github.com/agentzh/echo-nginx-module.git
+```
 
 2. 增加对应模块
 ```nginx
@@ -77,8 +83,8 @@ echo用于显示简单的文字，用于调试。
 3. 重启服务
 
 参考文献：
-[https://github.com/agentzh/echo-nginx-module](https://github.com/agentzh/echo-nginx-module)
-[http://wiki.nginx.org/HttpEchoModule](http://wiki.nginx.org/HttpEchoModule)
+[git官网](https://github.com/agentzh/echo-nginx-module)
+[nginx wiki](http://wiki.nginx.org/HttpEchoModule)
 
 
 geo模块
@@ -96,9 +102,9 @@ geo $mallcity {
 ```
 
 参考文献:
-[http://nginx.org/en/docs/http/ngx_http_geo_module.html](http://nginx.org/en/docs/http/ngx_http_geo_module.html)<br/>
+[英文介绍](http://nginx.org/en/docs/http/ngx_http_geo_module.html)<br/>
 中文翻译:
-[http://nginx.org/cn/docs/http/ngx_http_geo_module.html](http://nginx.org/cn/docs/http/ngx_http_geo_module.html)
+[中文翻译](http://nginx.org/cn/docs/http/ngx_http_geo_module.html)
 
 
 map 模块
@@ -127,7 +133,7 @@ map $provCode $xy_url {
 }
 ```
 参考文献:
-[http://nginx.org/en/docs/http/ngx_http_map_module.html](http://nginx.org/en/docs/http/ngx_http_map_module.html)
+[官网资料](http://nginx.org/en/docs/http/ngx_http_map_module.html)
 
 
 nginx-http-concat 模块
@@ -138,12 +144,15 @@ nginx-http-concat 模块是淘宝开发的基于Nginx减少HTTP请求数量的�
 http://example.com/??style1.css,style2.css,foo/style3.css
 ```
 
-1. 下载模块，网址[https://github.com/alibaba/nginx-http-concat](https://github.com/alibaba/nginx-http-concat) 或者使用git命令 git clone https://github.com/alibaba/nginx-http-concat.git
+1. [下载模块](https://github.com/alibaba/nginx-http-concat) 或者使用git命令 
+```shell
+git clone https://github.com/alibaba/nginx-http-concat.git
+```
 
 2. --add-module=/path/to/nginx-http-concat && make -j2 && make install
 
 参考文献：
-[https://github.com/alibaba/nginx-http-concat](https://github.com/alibaba/nginx-http-concat)
+[git官网](https://github.com/alibaba/nginx-http-concat)
 
 stub_status_module 模块
 ------------------------
@@ -164,7 +173,7 @@ nginx自带监控状态模块
 ```
 
 参考文献:
-[http://wiki.nginx.org/HttpStubStatusModule](http://wiki.nginx.org/HttpStubStatusModule)
+[nginx wiki](http://wiki.nginx.org/HttpStubStatusModule)
 
 
 set-misc-nginx-module
@@ -172,12 +181,15 @@ set-misc-nginx-module
 
 这个模块是由张亦春开发的nginx扩展功能，支持多种nginx set指令 (md5/sha1, sql/json quoting, and many more)
 
-1. 下载set-misc-nginx-module源代码[https://github.com/agentzh/set-misc-nginx-module](https://github.com/agentzh/set-misc-nginx-module) 或者使用git命令 git clone https://github.com/agentzh/set-misc-nginx-module.git
+1. [下载set-misc-nginx-module源代码](https://github.com/agentzh/set-misc-nginx-module) 或者使用git命令 
+```shell
+git clone https://github.com/agentzh/set-misc-nginx-module.git
+```
 
 2. 安装--add-module=/path/to/set-misc-nginx-module && make -j2 && make install
 
 参考文献：
-[https://github.com/agentzh/set-misc-nginx-module](https://github.com/agentzh/set-misc-nginx-module)
+[git官网](https://github.com/agentzh/set-misc-nginx-module)
 
 
 encrypted-session-nginx-module 模块
@@ -185,12 +197,15 @@ encrypted-session-nginx-module 模块
 
 这个模块是由张亦春开发的nginx扩展功能，支持nginx加解密操作。
 
-1. 下载encrypted-session-nginx-module模块的源代码， 或者使用git命令 git clone https://github.com/agentzh/encrypted-session-nginx-module.git
+1. 下载encrypted-session-nginx-module模块的源代码， 或者使用git命令 
+```shell
+git clone https://github.com/agentzh/encrypted-session-nginx-module.git
+```
 
 2. 安装--add-module=/path/to/encrypted-session-nginx-module && make -j2 && make install
 
 参考文献：
-[https://github.com/agentzh/encrypted-session-nginx-module](https://github.com/agentzh/encrypted-session-nginx-module)
+[git官网](https://github.com/agentzh/encrypted-session-nginx-module)
 
 
 memc-nginx-module 模块
@@ -198,24 +213,30 @@ memc-nginx-module 模块
 
 这个模块是由张亦春开发的nginx扩展功能，为nginx增加memcached支持。
 
-1. 下载memc-nginx-module模块源代码[https://github.com/agentzh/memc-nginx-module](https://github.com/agentzh/memc-nginx-module) 或者使用git命令 git clone https://github.com/agentzh/memc-nginx-module.git
+1. [下载memc-nginx-module模块源代码](https://github.com/agentzh/memc-nginx-module) 或者使用git命令 
+```shell
+git clone https://github.com/agentzh/memc-nginx-module.git
+```
 
 2. 安装--add-module=/path/to/memc-nginx-module && make -j2 && make install
 
 参考文献：
-[https://github.com/agentzh/memc-nginx-module](https://github.com/agentzh/memc-nginx-module)
+[git官网](https://github.com/agentzh/memc-nginx-module)
 
 srcache-nginx-module 模块
 ----------------------------
 
 这个模块是由张亦春开发的nginx扩展功能，配合memc-nginx-module模块使用，为memcached提供一个透明缓冲层。
 
-1. 下载srcache-nginx-module模块源代码[https://github.com/agentzh/srcache-nginx-module](https://github.com/agentzh/srcache-nginx-module) 或者使用git命令 git clone https://github.com/agentzh/srcache-nginx-module.git
+1. [下载srcache-nginx-module模块源代码](https://github.com/agentzh/srcache-nginx-module) 或者使用git命令 
+```shell
+git clone https://github.com/agentzh/srcache-nginx-module.git
+```
 
 2. 安装--add-module=/path/to/srcache-nginx-module && make -j2 && make install
 
 参考文献：
-[https://github.com/agentzh/srcache-nginx-module](https://github.com/agentzh/srcache-nginx-module)
+[git官网](https://github.com/agentzh/srcache-nginx-module)
 
 ngx_http_ssl_module 模块
 ------------------------
